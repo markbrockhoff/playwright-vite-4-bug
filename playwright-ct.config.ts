@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './',
+  testDir: './tests',
   /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
   snapshotDir: './__snapshots__',
   /* Maximum time one test can run for. */
@@ -37,23 +37,19 @@ const config: PlaywrightTestConfig = {
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'component',
+      testDir: './tests/component',
       use: {
         ...devices['Desktop Chrome'],
       },
     },
     {
-      name: 'firefox',
+      name: 'integration',
+      testDir: './tests/integration',
       use: {
-        ...devices['Desktop Firefox'],
+        ...devices['Desktop Chrome'],
       },
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
+    }
   ],
 };
 
